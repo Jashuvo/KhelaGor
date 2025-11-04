@@ -2,7 +2,7 @@ import React from 'react';
 import Link from '../components/Link';
 
 const AddressCard: React.FC<{ address: string, isDefault?: boolean }> = ({ address, isDefault }) => (
-    <div className="bg-white p-6 border-2 border-black rounded-xl relative">
+    <div className="bg-white p-6 border-2 border-black rounded-xl relative text-gray-800">
         {isDefault && <span className="absolute top-2 right-2 bg-yellow-300 text-black text-xs font-bold px-2 py-1 rounded-full">Default</span>}
         <p>{address}</p>
         <div className="mt-4 space-x-4">
@@ -27,7 +27,7 @@ const AddressesPage: React.FC = () => {
                 <div className="md:col-span-2">
                     <div className="space-y-6">
                         {addresses.map(addr => <AddressCard key={addr.id} address={addr.text} isDefault={addr.isDefault} />)}
-                         <button className="w-full text-center p-6 border-4 border-dashed border-black rounded-xl hover:bg-gray-100 font-bold text-lg">
+                         <button className="w-full text-center p-6 border-4 border-dashed border-black rounded-xl hover:bg-gray-100 font-bold text-lg text-gray-800">
                             + Add New Address
                         </button>
                     </div>

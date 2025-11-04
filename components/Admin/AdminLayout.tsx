@@ -46,7 +46,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ route }) => {
     };
 
     return (
-        <div className="flex h-screen">
+        <div className="flex h-screen bg-[#FAF4E5]">
             <AdminSidebar isOpen={isSidebarOpen} />
             <div className="flex-1 flex flex-col overflow-hidden">
                 <AdminHeader toggleSidebar={() => setSidebarOpen(!isSidebarOpen)} />

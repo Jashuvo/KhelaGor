@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from './Link';
+import { useAuth } from '../contexts/AuthContext';
 
 const FacebookIcon = () => (
     <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -21,6 +22,8 @@ const YoutubeIcon = () => (
 
 
 const Footer: React.FC = () => {
+  const { isAuthenticated, user } = useAuth();
+
   return (
     <footer className="bg-white text-black border-t-2 border-black">
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -40,8 +43,12 @@ const Footer: React.FC = () => {
                 <ul className="mt-4 space-y-2">
                     <li><Link to="#/" className="text-gray-600 hover:text-black">Home</Link></li>
                     <li><Link to="#/products" className="text-gray-600 hover:text-black">All Toys</Link></li>
-                    <li><Link to="#/account" className="text-gray-600 hover:text-black">My Account</Link></li>
-                    <li><Link to="#/admin" className="text-gray-600 hover:text-black">Admin Panel</Link></li>
+                    {isAuthenticated && (
+                        <li><Link to="#/account" className="text-gray-600 hover:text-black">My Account</Link></li>
+                    )}
+                    {user?.isAdmin && (
+                        <li><Link to="#/admin" className="text-gray-600 hover:text-black">Admin Panel</Link></li>
+                    )}
                 </ul>
               </div>
               <div>

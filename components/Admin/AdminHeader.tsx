@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { SearchIcon, BellIcon, MenuIcon, ChevronDownIcon } from './AdminIcons';
+import Link from '../Link';
 
 interface AdminHeaderProps {
     toggleSidebar: () => void;
@@ -9,6 +10,11 @@ interface AdminHeaderProps {
 const AdminHeader: React.FC<AdminHeaderProps> = ({ toggleSidebar }) => {
     const { user, logout } = useAuth();
     const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+    const handleLogout = () => {
+        logout();
+        setDropdownOpen(false);
+    }
 
     return (
         <header className="relative bg-white border-b-2 border-black h-20 flex items-center justify-between px-6 z-10 flex-shrink-0">
@@ -36,8 +42,8 @@ const AdminHeader: React.FC<AdminHeaderProps> = ({ toggleSidebar }) => {
                     </button>
                     {isDropdownOpen && (
                         <div className="absolute right-0 mt-2 w-48 bg-white border-2 border-black rounded-lg shadow-lg z-20">
-                            <a href="#/account" className="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-100">My Profile</a>
-                            <button onClick={logout} className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-100">Logout</button>
+                            <Link to="#/account" onClick={() => setDropdownOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-100">My Profile</Link>
+                            <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-100">Logout</button>
                         </div>
                     )}
                 </div>

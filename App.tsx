@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect } from 'react';
 import { NotificationProvider } from './contexts/NotificationProvider';
 import { CartProvider } from './contexts/CartContext';
@@ -26,6 +27,7 @@ import OrderSuccessPage from './pages/OrderSuccessPage';
 import WishlistPage from './pages/WishlistPage';
 import ComparePage from './pages/ComparePage';
 import AccountPage from './pages/AccountPage';
+import MyOrdersPage from './pages/MyOrdersPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import TrackOrderPage from './pages/TrackOrderPage';
 import SupportHubPage from './pages/SupportHubPage';
@@ -98,6 +100,8 @@ const AppContent: React.FC = () => {
                 return <ComparePage />;
             case '#/account':
                 return <AccountPage />;
+            case '#/account/orders':
+                return <MyOrdersPage />;
             case '#/account/addresses':
                 return <AddressesPage />;
             case '#/account/settings':
